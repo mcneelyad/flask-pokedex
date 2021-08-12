@@ -5,3 +5,6 @@ def getPokemonByName(name):
 
 def getPokemonType(pokemon):
     return pokemon.types
+
+def getPokemonImage(pokemon):
+    return pokemon.sprites

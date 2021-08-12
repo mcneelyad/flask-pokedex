@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+Index
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+<form action="http://localhost:5000/" method="post" id="search-form">
+    <label>Enter Name:</label>
+    <input id="pokemon-search" type="text" name="pokemon" />
+    <input id="submit-button" type="submit" value="submit" />
+</form>
+{% if message: %}
+    <p class="message">{{ message }}</p>
+{% endif %}
+
+{% if pokemon: %}
+<div class="pokemon-details">
+    {% if image: %}
+    <img id="pokemon-image" src="{{ image }}" alt="pokemon">
+    {% endif %}
+    <br>
+    <h1>{{ pokemon.name.title() }}</h1>
+    <div class="type-list">
+        <h2>Type(s)</h2>
+        <ul>
+            {% for type in pokemon.types: %}
+            <li class="type">{{ type.title() }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<script>
+    // add a click event to the submit button
+    document.getElementById('submit-button').addEventListener('click', function(e) {
+        var name = document.getElementById('pokemon-search').value;
+
+        // if nothing is entered, do nothing
+        if (name.length === 0) {
+            e.preventDefault();
+            window.location.href = 'http://localhost:5000/';
+        }
+    }, false);
+</script>
+{% endif %}
+
+{% endblock %}
