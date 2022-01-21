@@ -83,15 +83,16 @@ body {
 }
 
 #pokemon-image {
-    margin: 10px;
     border: 1px solid #e5e5e5;
     border-radius: 50%;
     box-shadow: 0 1px 2px rgb(0 0 0 / 5%);
     box-sizing: border-box;
-    width: 15rem;
     margin: auto;
     display: block;
     background-color: white;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
 }
 
 .pokemon-details {
